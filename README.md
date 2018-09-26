@@ -6,9 +6,10 @@ It is not meant to be installed from npm, instead the repo should be cloned and 
 
 ## Stack details
 
-- Koa for http[s].
+- Express for http[s].
 - React for UI.
 - Redux for UI state.
 - Babel 7 & Webpack for front-end packaging.
 - PostgreSQL database.
+- Redis for sessions.
 - StandardJS.

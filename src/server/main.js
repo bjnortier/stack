@@ -1,8 +1,23 @@
-import Koa from 'koa'
-const app = new Koa()
+#!/usr/bin/env babel-node
+import '@babel/polyfill'
 
-app.use(async ctx => {
-  ctx.body = 'Hello World'
-})
+import logger from './logger'
+import createHTTP from './http/createHTTP'
+import ensureEnvExists from './ensureEnvExists'
 
-app.listen(3000)
+const requiredEnvs = ['PORT', 'SESSION_SECRET']
+if (process.env.NODE_ENV === 'production') {
+  requiredEnvs.push('REDIS_URL')
+}
+ensureEnvExists(requiredEnvs)
+
+const start = async () => {
+  try {
+    await createHTTP(process.env.PORT)
+    logger.info('Stack is ready 🥞.')
+  } catch (err) {
+    logger.error(err.stack)
+    process.exit(1)
+  }
+}
+start()

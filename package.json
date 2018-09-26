@@ -11,7 +11,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "webpack",
     "webpack:watch": "webpack -d --watch",
-    "start-dev": "PORT=3100 nodemon -w src/server --exec babel-node -- ./src/server/main.js"
+    "start-dev": "nodemon -w src/server --exec babel-node -- ./src/server/main.js"
   },
   "repository": {
     "type": "git",
@@ -25,11 +25,21 @@
   "homepage": "https://github.com/bjnortier/stack#readme",
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
-    "koa": "^2.5.3"
+    "body-parser": "^1.18.3",
+    "compression": "^1.7.3",
+    "connect-redis": "^3.3.3",
+    "express": "^4.16.3",
+    "express-async-handler": "^1.1.4",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.15.6",
+    "express-winston": "^3.0.0",
+    "helmet": "^3.13.0",
+    "winston": "^3.1.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.0",
     "@babel/core": "^7.1.0",
+    "@babel/node": "^7.0.0",
     "@babel/preset-env": "^7.1.0",
     "babel-loader": "^8.0.2",
     "nodemon": "^1.18.4",
