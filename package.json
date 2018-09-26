@@ -1,0 +1,26 @@
+{
+  "name": "stack",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-dev": "PORT=3100 nodemon -w src/server --exec babel-node -- ./src/server/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bjnortier/stack.git"
+  },
+  "author": "Ben Nortier <ben@bjnortier.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bjnortier/stack/issues"
+  },
+  "homepage": "https://github.com/bjnortier/stack#readme",
+  "dependencies": {
+    "koa": "^2.5.3"
+  },
+  "devDependencies": {
+    "standard": "^12.0.1"
+  }
+}
