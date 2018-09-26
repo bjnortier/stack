@@ -7,9 +7,10 @@ It is not meant to be installed from npm, instead the repo should be cloned and 
 ## Stack details
 
 - Express for http[s].
-- React for UI.
-- Redux for UI state.
-- Babel 7 & Webpack for front-end packaging.
+- React for UI & Redux for UI state.
+- Babel 7 & Webpack for front-end packaging and back-end ES* support.
 - PostgreSQL database.
 - Redis for sessions.
-- StandardJS.
+- StandardJS
+- Mocha for unit & api testing.
+- Minimui for React components.

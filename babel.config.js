@@ -1,5 +1,6 @@
 const presets = [
-  '@babel/env'
+  '@babel/env',
+  '@babel/react'
 ]
 
 module.exports = { presets }
