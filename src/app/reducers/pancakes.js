@@ -28,7 +28,7 @@ const patching = (state0 = {}, action) => {
     }
     case 'PATCH_PANCAKE_SUCCESS': {
       const state1 = { ...state0 }
-      delete state1[action.pancake.id]
+      delete state1[action.object.id]
       return state1
     }
     case 'PATCH_PANCAKE_ERROR': {
@@ -67,20 +67,20 @@ const deleting = (state0 = {}, action) => {
 const objects = (state0 = {}, action) => {
   switch (action.type) {
     case 'READ_PANCAKES_SUCCESS': {
-      return action.pancakes.reduce((acc, pancake) => {
-        acc[pancake.id] = pancake
+      return action.objects.reduce((acc, object) => {
+        acc[object.id] = object
         return acc
       }, {})
     }
     case 'READ_PANCAKE_SUCCESS':
     case 'PATCH_PANCAKE_SUCCESS': {
       const state1 = { ...state0 }
-      state1[action.pancake.id] = action.pancake
+      state1[action.object.id] = action.object
       return state1
     }
     case 'CREATE_PANCAKE_SUCCESS': {
       const state1 = { ...state0 }
-      state1[action.pancake.id] = action.pancake
+      state1[action.object.id] = action.object
       return state1
     }
     case 'DELETE_PANCAKE_SUCCESS': {
