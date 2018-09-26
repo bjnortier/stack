@@ -17,7 +17,7 @@ import { version } from '../../../package.json'
 
 // ---------- EXPRESS ----------
 
-export default (port) => {
+export default (port, db) => {
   const app = express()
   app.set('version', version)
   app.use(helmet())
@@ -56,7 +56,7 @@ export default (port) => {
   }))
   app.set('view engine', '.hbs')
   app.use('/app', createAppRouter())
-  app.use('/api', createAPIRouter())
+  app.use('/api', createAPIRouter(version, db))
 
   // ---------- Error handlers ----------
 

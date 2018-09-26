@@ -10,12 +10,12 @@
   "scripts": {
     "test:unit": "mocha --require @babel/register --recursive test/unit/**",
     "test:unit:watch": "npm run test:unit -- --watch",
-    "test:api": "PORT=3108 LOG_LEVEL=critical SESSION_SECRET=b301a mocha --exit --require @babel/register --require @babel/polyfill --recursive test/api/*.test.js",
+    "test:api": "source .func-env && mocha --exit --require @babel/register --require @babel/polyfill --recursive test/api/*.test.js",
     "test:api:watch": "npm run test:api -- --watch",
     "test": "npm run test:unit && npm run test:api",
     "webpack": "webpack",
     "webpack:watch": "webpack -d --watch",
-    "start-dev": "PORT=3107 SESSION_SECRET=ffc4f nodemon -w src/server --exec babel-node -- ./src/server/main.js"
+    "start-dev": "source .dev-env && nodemon -w src/server --exec babel-node -- ./src/server/main.js"
   },
   "repository": {
     "type": "git",
@@ -37,7 +37,9 @@
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.6",
     "express-winston": "^3.0.0",
+    "haikunator": "^2.0.0",
     "helmet": "^3.13.0",
+    "massive": "^5.4.0",
     "minimui": "^0.3.1",
     "redux": "^4.0.0",
     "winston": "^3.1.0"
