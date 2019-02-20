@@ -27,7 +27,7 @@ const config = {
   output: {
     path: path.join(__dirname, 'public', 'bundles/'),
     filename: '[name].bundle.js',
-    publicPath: '/public/bundles'
+    publicPath: '/bundles'
   },
   plugins: []
 }
