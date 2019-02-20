@@ -1,16 +1,23 @@
 const path = require('path')
 const fs = require('fs')
+const opn = require('opn')
+const webpack = require('webpack')
 
-module.exports = {
-  mode: process.env.NODE_ENV || 'development',
+const mode = process.env.NODE_ENV || 'development'
+const port = process.env.PORT
+
+const config = {
+  mode,
   entry: {
-    'index': './src/app/index'
+    'index': [
+      path.resolve(__dirname, './src/app/index')
+    ]
   },
   module: {
     rules: [
       {
         test: /\.jsx?$/,
-        loader: 'babel-loader',
+        loader: ['babel-loader'],
         include: [
           fs.realpathSync(path.resolve(__dirname, 'src'))
         ]
@@ -18,7 +25,11 @@ module.exports = {
     ]
   },
   output: {
-    path: path.join(__dirname, 'public', 'bundle/'),
-    filename: '[name].bundle.js'
-  }
+    path: path.join(__dirname, 'public', 'bundles/'),
+    filename: '[name].bundle.js',
+    publicPath: '/public/bundles'
+  },
+  plugins: []
 }
+
+module.exports = config

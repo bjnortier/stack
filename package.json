@@ -8,11 +8,12 @@
   },
   "main": "index.js",
   "scripts": {
+    "test:lint": "standard",
     "test:unit": "mocha --require @babel/register --recursive test/unit/**",
     "test:unit:watch": "npm run test:unit -- --watch",
     "test:api": "source .func-env && mocha --exit --require @babel/register --require @babel/polyfill --recursive test/api/*.test.js",
     "test:api:watch": "npm run test:api -- --watch",
-    "test": "npm run test:unit && npm run test:api",
+    "test": "npm run test:lint && npm run test:unit && npm run test:api",
     "webpack": "webpack",
     "webpack:watch": "webpack -d --watch",
     "start-dev": "source .dev-env && nodemon -w src/server --exec babel-node -- ./src/server/main.js"
@@ -55,9 +56,10 @@
     "@fortawesome/free-solid-svg-icons": "^5.3.1",
     "@fortawesome/react-fontawesome": "^0.1.3",
     "babel-loader": "^8.0.2",
-    "expect": "^23.6.0",
+    "expect": "^24.1.0",
     "mocha": "^5.2.0",
     "nodemon": "^1.18.4",
+    "opn": "^5.4.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-redux": "^5.0.7",
@@ -69,7 +71,8 @@
     "styled-normalize": "^8.0.1",
     "supertest": "^3.3.0",
     "webpack": "^4.20.2",
-    "webpack-cli": "^3.1.1"
+    "webpack-cli": "^3.1.1",
+    "webpack-dev-server": "^3.2.0"
   },
   "standard": {
     "globals": [

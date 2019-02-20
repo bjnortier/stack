@@ -8,12 +8,14 @@ import exphbs from 'express-handlebars'
 import helmet from 'helmet'
 import session from 'express-session'
 import connectRedis from 'connect-redis'
+import webpack from 'webpack'
 
 import logger from '../logger'
 import { notFoundMiddleware, renderErrorMiddleware, createFatalHandler } from './errorHandling'
 import createAppRouter from './routes/app'
 import createAPIRouter from './routes/api'
 import { version } from '../../../package.json'
+import webpackConfig from '../../../webpack.config'
 
 // ---------- EXPRESS ----------
 
@@ -46,6 +48,14 @@ export default (port, db) => {
   }))
 
   // ---------- ROUTES ----------
+
+  if (process.env.NODE_ENV !== 'production') {
+    const webpackCompiler = webpack(webpackConfig)
+    app.use(require('webpack-dev-middleware')(webpackCompiler, {
+        noInfo: true,
+        publicPath: webpackConfig.output.publicPath
+    }))
+  }
 
   app.use(bodyParser.json())
   app.use(bodyParser.urlencoded({ extended: false }))
