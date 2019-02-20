@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 import { render } from 'react-dom'
 import thunkMiddleware from 'redux-thunk'
 import { createLogger } from 'redux-logger'
-import { reset } from 'minimui'
+import { Reset } from 'minimui'
 
 import reducer from './reducers'
 import NotFound from './components/NotFound'
@@ -22,11 +22,11 @@ const configureStore = (preloadedState) => {
 }
 const store = configureStore({})
 
-reset()
 render(
   <Provider store={store}>
     <BrowserRouter>
       <div>
+        <Reset />
         <Switch>
           <Route exact path='/app' component={PancakesContainer} />
           <Route component={NotFound} />

@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSyncAlt } from '@fortawesome/free-solid-svg-icons'
-import { IconButton, TextButton, Dialog, Header, Footer, HSpace } from 'minimui'
+import { Button, HSpace, Panel } from 'minimui'
 
 import Pancake from './Pancake'
 
@@ -36,28 +37,27 @@ class Pancakes extends Component {
     } else {
       table = 'None'
     }
-    return <Center><Dialog>
-      <Header>
+    return <Center><Panel>
+      <div>
         <span>Pancakes<HSpace /></span>
-        <IconButton
-          borderColor='transparent'
-          backgroundColor='transparent'
-          icon={faSyncAlt}
+        <Button
+          secondary
+          label={<FontAwesomeIcon icon={faSyncAlt} />}
           inProgress={readingAll === 'in-progress'}
           error={readingAll === 'error'}
           onClick={onRereadPancakes}
         />
-      </Header>
+      </div>
       {table}
-      <Footer>
-        <TextButton
+      <div>
+        <Button
           label='Create'
           onClick={onCreate}
           inProgress={creating === 'in-progress'}
           error={creating === 'error'}
         />
-      </Footer>
-    </Dialog></Center>
+      </div>
+    </Panel></Center>
   }
 }
 

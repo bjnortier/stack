@@ -17,6 +17,7 @@ const start = async () => {
     const db = await massive({ connectionString: process.env.DATABASE_URL })
     await createHTTP(process.env.PORT, db)
     logger.info('Stack is ready 🥞.')
+    // await opn(`http://localhost:${process.env.PORT}`, { app: 'google chrome' })
   } catch (err) {
     logger.error(err.stack)
     process.exit(1)

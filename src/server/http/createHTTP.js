@@ -52,8 +52,8 @@ export default (port, db) => {
   if (process.env.NODE_ENV !== 'production') {
     const webpackCompiler = webpack(webpackConfig)
     app.use(require('webpack-dev-middleware')(webpackCompiler, {
-        noInfo: true,
-        publicPath: webpackConfig.output.publicPath
+      noInfo: true,
+      publicPath: webpackConfig.output.publicPath
     }))
   }
 

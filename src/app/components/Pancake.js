@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { faTrashAlt } from '@fortawesome/free-regular-svg-icons'
-import { IconButton, Checkbox } from 'minimui'
+import { Button, Checkbox } from 'minimui'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class Pancake extends Component {
   render () {
@@ -15,8 +16,9 @@ class Pancake extends Component {
         inProgress={patching === 'in-progress'}
         label='Ready'
       /></td>
-      <td><IconButton
-        icon={faTrashAlt}
+      <td><Button
+        label={<FontAwesomeIcon icon={faTrashAlt} />}
+        secondary
         onClick={() => onDelete()}
         error={deleting === 'error'}
         inProgress={deleting === 'in-progress'}

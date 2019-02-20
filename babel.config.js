@@ -3,4 +3,9 @@ const presets = [
   '@babel/react'
 ]
 
-module.exports = { presets }
+const plugins = [
+  '@babel/plugin-proposal-object-rest-spread',
+  'babel-plugin-styled-components'
+]
+
+module.exports = { presets, plugins }

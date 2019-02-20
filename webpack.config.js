@@ -1,13 +1,8 @@
 const path = require('path')
 const fs = require('fs')
-const opn = require('opn')
-const webpack = require('webpack')
-
-const mode = process.env.NODE_ENV || 'development'
-const port = process.env.PORT
 
 const config = {
-  mode,
+  mode: process.env.NODE_ENV || 'development',
   entry: {
     'index': [
       path.resolve(__dirname, './src/app/index')
