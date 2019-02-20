@@ -11,7 +11,7 @@
     "test:lint": "standard",
     "test:unit": "mocha --require @babel/register --recursive test/unit/**",
     "test:unit:watch": "npm run test:unit -- --watch",
-    "test:api": "source .func-env && mocha --exit --require @babel/register --require @babel/polyfill --recursive test/api/*.test.js",
+    "test:api": "source .api-env && mocha --exit --require @babel/register --require @babel/polyfill --recursive test/api/*.test.js",
     "test:api:watch": "npm run test:api -- --watch",
     "test": "npm run test:lint && npm run test:unit && npm run test:api",
     "webpack": "webpack",

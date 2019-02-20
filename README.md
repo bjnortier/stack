@@ -26,8 +26,8 @@ $ degit bjnortier/stack foo
 ```
 
 - Edit package.json to the new project name, git repo etc.
-- Create a ```dev``` and ```func``` database in Postgres using ```createdb```, e.g. ```createdb foo_dev && createdb foo_func```.
-- Create .dev-env and .func-env (replace db names, ports and secret with your own values). E.g.:
+- Create a ```dev``` and ```api``` database in Postgres using ```createdb```, e.g. ```createdb foo_dev && createdb foo_api```.
+- Create .dev-env and .api-env (replace db names, ports and secret with your own values). E.g.:
 
 ```
 cat > .dev-env
@@ -37,10 +37,10 @@ export DATABASE_URL=postgres://:@localhost/dev_foo
 ```
 
 ```
-cat > .func-env
+cat > .api-env
 export PORT=3108
 export SESSION_SECRET=b301a
-export DATABASE_URL=postgres://:@localhost/func_foo
+export DATABASE_URL=postgres://:@localhost/api_foo
 ```
 
 Install dependencies:

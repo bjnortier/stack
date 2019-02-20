@@ -48,8 +48,7 @@ export default (port, db) => {
   }))
 
   // ---------- ROUTES ----------
-
-  if (process.env.NODE_ENV !== 'production') {
+  if (process.env.NODE_ENV === 'development') {
     const webpackCompiler = webpack(webpackConfig)
     app.use(require('webpack-dev-middleware')(webpackCompiler, {
       noInfo: true,
