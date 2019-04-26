@@ -31,6 +31,7 @@ $ degit bjnortier/stack foo
 
 ```
 cat > .dev-env
+export NODE_ENV=development
 export PORT=3107
 export SESSION_SECRET=ff12
 export DATABASE_URL=postgres://:@localhost/dev_foo
@@ -38,6 +39,7 @@ export DATABASE_URL=postgres://:@localhost/dev_foo
 
 ```
 cat > .api-env
+export NODE_ENV=api
 export PORT=3108
 export SESSION_SECRET=b301a
 export DATABASE_URL=postgres://:@localhost/api_foo

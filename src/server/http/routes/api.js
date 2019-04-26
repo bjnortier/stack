@@ -2,19 +2,7 @@ import { Router } from 'express'
 import Haikunator from 'haikunator'
 
 import logger from '../../logger'
-
-/**
- * Adapted from https://www.npmjs.com/package/express-async-handler
- * Return 500 + json on exception
- */
-const asyncHandler = fn => function asyncUtilWrap (req, res, next, ...args) {
-  const fnReturn = fn(req, res, next, ...args)
-  return Promise.resolve(fnReturn).catch(err => {
-    logger.error(err.message)
-    logger.error(err.stack)
-    res.status(500).json('something went wrong')
-  })
-}
+import { wrapJSON } from './async'
 
 const haikunator = new Haikunator({
   defaults: {}
@@ -33,7 +21,7 @@ export default (version, db) => {
     res.status(200).json(`Hello 🥞. API version ${version}`)
   })
 
-  router.get('/pancakes', asyncHandler(async (req, res) => {
+  router.get('/pancakes', wrapJSON(async (req, res) => {
     const rows = await db.pancakes.find({}, {
       order: [{
         field: 'createdAt', direction: 'asc'
@@ -42,7 +30,7 @@ export default (version, db) => {
     res.status(200).json(rows)
   }))
 
-  router.post('/pancakes', asyncHandler(async (req, res) => {
+  router.post('/pancakes', wrapJSON(async (req, res) => {
     const row = await db.pancakes.save({
       name: generateName(),
       createdAt: new Date(),
@@ -51,7 +39,7 @@ export default (version, db) => {
     res.status(201).json(row)
   }))
 
-  router.get('/pancake/:id', asyncHandler(async (req, res) => {
+  router.get('/pancake/:id', wrapJSON(async (req, res) => {
     const { id } = req.params
     const pancake = await db.pancakes.findOne({ id })
     if (!pancake) {
@@ -61,7 +49,7 @@ export default (version, db) => {
     }
   }))
 
-  router.patch('/pancake/:id', asyncHandler(async (req, res) => {
+  router.patch('/pancake/:id', wrapJSON(async (req, res) => {
     const { id } = req.params
     const params = {
       ready: req.body.ready
@@ -80,7 +68,7 @@ export default (version, db) => {
     }
   }))
 
-  router.delete('/pancake/:id', asyncHandler(async (req, res) => {
+  router.delete('/pancake/:id', wrapJSON(async (req, res) => {
     const { id } = req.params
     const rows = await db.pancakes.destroy({ id })
     if (rows.length) {
@@ -91,7 +79,7 @@ export default (version, db) => {
   }))
 
   if (process.NODE_ENV !== 'production') {
-    router.get('/exception', asyncHandler(async (req, res) => {
+    router.get('/exception', wrapJSON(async (req, res) => {
       throw Error('Mock error')
     }))
   }
