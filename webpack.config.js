@@ -1,8 +1,10 @@
 const path = require('path')
 const fs = require('fs')
 
+const mode = process.env.NODE_ENV || 'development'
+
 const config = {
-  mode: process.env.NODE_ENV || 'development',
+  mode,
   entry: {
     'index': [
       path.resolve(__dirname, './src/app/index')
