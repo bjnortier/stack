@@ -22,7 +22,7 @@ const config = {
     ]
   },
   output: {
-    path: path.join(__dirname, 'public', 'bundles/'),
+    path: path.join(__dirname, 'static', 'bundles/'),
     filename: '[name].bundle.js',
     publicPath: '/bundles'
   },

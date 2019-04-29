@@ -18,7 +18,7 @@
     "webpack": "webpack",
     "webpack:watch": "webpack -d --watch",
     "start-dev": "source .dev-env && nodemon -w src/server --exec babel-node -- ./src/server/main.js",
-    "zip": "VERSION=`grep '\"version\":' package.json | cut -d\\\" -f4` && zip -r tws2@$VERSION.zip dist public views package.json package-lock.json",
+    "zip": "VERSION=`grep '\"version\":' package.json | cut -d\\\" -f4` && zip -r stack@$VERSION.zip dist public views package.json package-lock.json",
     "dist": "NODE_ENV=production && npm audit && webpack && rimraf dist/ && babel --optional runtime src/server -d dist/server && npm run zip"
   },
   "repository": {

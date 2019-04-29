@@ -1,4 +1,4 @@
 node_modules/
 .dev-env
 .api-env
-public/bundles/*
+static/bundles/*
