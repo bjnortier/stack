@@ -1,7 +1,6 @@
 import { Router } from 'express'
 import Haikunator from 'haikunator'
 
-import logger from '../../logger'
 import { wrapJSON } from './async'
 
 const haikunator = new Haikunator({
